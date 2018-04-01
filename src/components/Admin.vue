@@ -23,6 +23,20 @@
               <label for="productPrice">Price</label>
               <input type="text" v-model="productPrice" class="form-control" id="productPrice"  placeholder="Enter Product Price">
             </div>
+             <div class="form-group">
+              <label for="productCatergory">Category</label>
+              <select class="form-control" id="productCategory" v-on:change="handleSelect">
+                <option value="">Select Category</option>
+                <option value="accessories">Accessories</option>
+                <option value="denim">Denim</option>
+                <option value="kicks">Kicks</option>
+                <option value="jeans">Jeans</option>
+                <option value="pants">Pants</option>
+                <option value="shirts">Shirts</option>
+                 <option value="shorts">Shorts</option>
+                  <option value="jackets">Jackets</option>
+              </select>
+            </div>
             <div class="form-group">
               <label for="productImage">Image</label>
             <div class="custom-file">
@@ -49,12 +63,16 @@ export default {
       title: '',
       quantity: '',
       productPrice: '',
-      image: ''
+      image: '',
+      category: ''
     };
   },
   methods: {
       handleImageChange: function(event) {
         return this.image = event.target.value
+      },
+      handleSelect: function(event) {
+        return this.category = event.target.value
       },
       handleProductClick: function (event){
        event.preventDefault();
@@ -62,10 +80,11 @@ export default {
          title: this.title,
          quantity: this.quantity,
          productPrice: this.productPrice,
-         image: this.image
+         image: this.image,
+         category: this.category
        }
        this.$store.dispatch("addProduct", newProduct);
-      }
+      },
   }
 };
 </script>
