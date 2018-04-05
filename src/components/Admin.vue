@@ -40,7 +40,7 @@
             <div class="form-group">
               <label for="productImage">Image</label>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile" v-on:change="handleImageChange">
+              <input type="file" name="file" class="custom-file-input" id="customFile" v-on:change="handleImageChange">
               <label class="custom-file-label" for="customFile">Choose image file</label>
           </div>
           </div>
@@ -56,6 +56,8 @@
 
 <script>
 import firebase from 'firebase';
+import cloudinary from '../cloudinaryConfig';
+import axios from 'axios';
 export default {
   name: "admin",
   data: function() {
@@ -64,26 +66,42 @@ export default {
       quantity: '',
       productPrice: '',
       image: '',
-      category: ''
+      category: '',
+      imageFile: {}
     };
   },
   methods: {
       handleImageChange: function(event) {
-        return this.image = event.target.value
+        return this.imageFile = event.target.files[0];
       },
       handleSelect: function(event) {
         return this.category = event.target.value
       },
       handleProductClick: function (event){
-       event.preventDefault();
-       var newProduct = {
-         title: this.title,
-         quantity: this.quantity,
-         productPrice: this.productPrice,
-         image: this.image,
-         category: this.category
-       }
-       this.$store.dispatch("addProduct", newProduct);
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('file', this.imageFile);
+        formData.append('upload_preset', process.env.CLOUDINARY_PRESET);
+        axios({
+         url: process.env.CLOUDINARY_URL,
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/x-www-form-urlencoded'
+         },
+         data: formData
+       }).then((response) => {
+         console.log(response.data)
+          var newProduct = {
+            title: this.title,
+            quantity: this.quantity,
+            productPrice: this.productPrice,
+            imageUrl: response.data.url,
+            category: this.category
+          }
+          this.$store.dispatch("addProduct", newProduct);
+       }).catch((error) => {
+         console.log(error);
+       })
       },
   }
 };

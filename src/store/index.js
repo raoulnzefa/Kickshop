@@ -11,7 +11,7 @@ export const store = new Vuex.Store({
     },
     mutations: {
         getProducts: (state, snapshot) => {
-          console.log(cloudinary)
+          console.log(cloudinary);
           return Object.values(snapshot).forEach(element => {
            return state.products.push(element);
          });

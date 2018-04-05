@@ -3,9 +3,6 @@
 <navBar></navBar>
 <div class="container">
 <div class="row">
-  <!-- <ul>
-    <li v-for="product in allProducts">{{product.title}}</li>
-    </ul> -->
   <div class="col-sm" v-for="product in allProducts">
 <product-card v-bind:product="product"></product-card>
 </div>
