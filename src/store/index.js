@@ -1,6 +1,7 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
 import firebase from 'firebase';
+import cloudinary from '../cloudinaryConfig';
 
 Vue.use(Vuex);
 const database = firebase.database();
@@ -10,7 +11,10 @@ export const store = new Vuex.Store({
     },
     mutations: {
         getProducts: (state, snapshot) => {
-          return state.products.push(snapshot);
+          console.log(cloudinary)
+          return Object.values(snapshot).forEach(element => {
+           return state.products.push(element);
+         });
         }
     },
     actions: {

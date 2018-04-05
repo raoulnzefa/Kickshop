@@ -44,7 +44,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process': {
         'env': {
-          'CLOUDINARY_URL': JSON.stringify(process.env.CLOUDINARY_URL),
+          'CLOUDINARY_NAME': JSON.stringify(process.env.CLOUDINARY_NAME),
+          'CLOUDINARY_API_KEY': JSON.stringify(process.env.CLOUDINARY_API_KEY),
+          'CLOUDINARY_API_SECRET': JSON.stringify(process.env.CLOUDINARY_API_SECRET),
           'FIREBASE_API_KEY':JSON.stringify(process.env.FIREBASE_API_KEY),
           'FIREBASE_AUTH_DOMAIN':JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
           'FIREBASE_DATABASE_URL':JSON.stringify(process.env.FIREBASE_DATABASE_URL),

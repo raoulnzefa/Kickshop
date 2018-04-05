@@ -77,13 +77,7 @@ export default {
   methods: {
     handleClick: function() {
       console.log(this.search)
-    },
-     getAllProducts: function () {
-        this.$store.dispatch('getAllProducts');
     }
-  },
-  created() {
-    return this.getAllProducts();
   }
 };
 </script>
