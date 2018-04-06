@@ -1,10 +1,11 @@
 <template>
 <div class="container">
 <navBar></navBar>
+<span class="text-center"><h4> New Summer Releases</h4></span>
 <div class="container">
 <div class="row">
-  <div class="col-sm" v-for="product in allProducts">
-<product-card v-bind:product="product"></product-card>
+  <div class="col-sm" v-for="(product, index) in allProducts" :key="index">
+<product-card :product="product" :index="index"></product-card>
 </div>
 </div>
 </div>
@@ -33,12 +34,13 @@ export default {
   },
 
   created() {
-      this.fetchProducts();
+      if (!Object.keys(this.$store.state.products).length) {
+        this.fetchProducts();
+      }  
   },
 
   computed: {
      allProducts: function() {
-       console.log(this.$store.state.products)
        return this.$store.state.products;
      }
   }

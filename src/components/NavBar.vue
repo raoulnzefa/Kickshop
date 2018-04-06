@@ -29,31 +29,31 @@
     <div class="navbar-nav">
       <div class="row">
         <div class="col-sm">
-          <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
+          <router-link class="nav-item nav-link active" :to="{path: '/'}">Home<span class="sr-only">(current)</span></router-link>
           </div>
       <div class="col-sm">
-      <a class="nav-item nav-link active" href="#">Accessories</a>
+      <router-link class="nav-item nav-link"  :to="{path:'categories', query:{type: 'accessories'}}">Accessories</router-link>
       </div>
       <div class="col-sm">
-      <a class="nav-item nav-link" href="#">Denim</a>
+      <router-link class="nav-item nav-link"  :to="{path:'categories', query:{type: 'denim'}}">Denim</router-link>
       </div>
       <div class="col-sm">
-      <a class="nav-item nav-link" href="#">Kicks</a>
+      <router-link class="nav-item nav-link"  :to="{path:'categories', query:{type: 'kicks'}}">Kicks</router-link>
       </div>
       <div class="col-sm">
-        <a class="nav-item nav-link" href="#">Jeans</a>
+        <router-link class="nav-item nav-link" :to="{path:'categories', query:{type: 'jeans'}}">Jeans</router-link>
       </div>
       <div class="col-sm">
-        <a class="nav-item nav-link" href="#">Pants</a>
+       <router-link class="nav-item nav-link"  :to="{path:'categories', query:{type: 'pants'}}">Pants</router-link>
       </div>
       <div class="col-sm">
-        <a class="nav-item nav-link" href="#">Shirts</a>
+        <router-link class="nav-item nav-link"  :to="{path:'categories', query:{type: 'shirts'}}">Shirts</router-link>
         </div>
       <div class="col-sm">
-        <a class="nav-item nav-link" href="#">Shorts</a>
+        <router-link class="nav-item nav-link"  :to="{path:'categories', query:{type: 'shorts'}}">Shorts</router-link>
         </div>
       <div class="col-sm">
-        <a class="nav-item nav-link" href="#">Jackets</a>
+        <router-link class="nav-item nav-link"  :to="{path:'categories', query:{type: 'jackets'}}">Jackets</router-link>
         </div>
       </div>
     </div>
@@ -62,7 +62,6 @@
 </div>
     </div>
     <br />
-<span class="text-center"><h4> New Summer Releases</h4></span>
   </div>
 </template>
 

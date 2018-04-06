@@ -1,4 +1,5 @@
 <template>
+<router-link :to="{path:'product', query:{id: index}}">
 <div class="container">
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" :src="product.imageUrl" alt="">
@@ -8,18 +9,24 @@
   </div>
 </div>
 </div>
+</router-link>
 </template>
 
 
 <script>
 export default {
   name: 'productCard',
-  props:['product'],
+  props:['product', 'index'],
 
 }
 </script>
 <style scoped>
 .card{
-    height: 450px;
-}
+    height: 350px;
+};
+ img {
+   object-fit: cover;
+   height: 100%;
+   width: 100%;
+ }
 </style>
